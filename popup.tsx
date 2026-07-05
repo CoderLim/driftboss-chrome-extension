@@ -1,45 +1,55 @@
 import { useState } from "react"
 
-import screenshot1 from "data-base64:~assets/screenshots/screenshot1.png"
-
 import "./popup.css"
 
 function IndexPopup() {
   const [isHovered, setIsHovered] = useState(false)
 
-  const handlePlayClick = () => {
-    chrome.tabs.create({ url: "https://driftbossgame.org" })
+  const handleOpenClick = () => {
+    chrome.tabs.create({ url: "https://csvviewer.net" })
   }
 
   return (
     <div className="popup-container">
-      <div className="game-screenshot">
-        {/* Game screenshot background */}
-        <img
-          src={screenshot1}
-          alt="Drift Boss Game Screenshot"
-          className="screenshot-image"
-        />
+      <div className="csv-preview">
+        <div className="csv-grid" aria-hidden="true">
+          <div className="csv-cell csv-header">Name</div>
+          <div className="csv-cell csv-header">Email</div>
+          <div className="csv-cell csv-header">Status</div>
+          <div className="csv-cell">Alex</div>
+          <div className="csv-cell">alex@example.com</div>
+          <div className="csv-cell">Active</div>
+          <div className="csv-cell">Mia</div>
+          <div className="csv-cell">mia@example.com</div>
+          <div className="csv-cell">Pending</div>
+        </div>
         <div className="overlay">
           <button
-            className={`play-button ${isHovered ? "hovered" : ""}`}
-            onClick={handlePlayClick}
+            className={`open-button ${isHovered ? "hovered" : ""}`}
+            onClick={handleOpenClick}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
+            aria-label="Open CSV Viewer"
           >
             <svg
-              className="play-icon"
+              className="open-icon"
               viewBox="0 0 24 24"
-              fill="currentColor"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
-              <path d="M8 5v14l11-7z" />
+              <path d="M15 3h6v6" />
+              <path d="M10 14 21 3" />
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
             </svg>
           </button>
         </div>
       </div>
       <div className="footer">
-        <h3 className="game-title">Drift Boss</h3>
-        <p className="game-subtitle">Drift Boss – Click to Start</p>
+        <h3 className="app-title">CSV Viewer</h3>
+        <p className="app-subtitle">Open CSVViewer.net</p>
       </div>
     </div>
   )
