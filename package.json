@@ -1,7 +1,7 @@
 {
   "name": "csvviewer-chrome-extension",
   "displayName": "CSV Viewer - Open CSV Files Online",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Quickly open CSVViewer.net from Chrome and view CSV files online with one click.",
   "author": "CoderLim",
   "scripts": {
